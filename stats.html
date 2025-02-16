@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Journey Summary | Duo-Do</title>
+    <title>Stats | Duo-Do</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
             text-align: center;
+            padding: 20px;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
             background: white;
             padding: 20px;
@@ -25,97 +23,80 @@
 
         h1 {
             color: #333;
-            font-size: 28px;
+            font-size: 24px;
         }
 
-        .insight-card {
-            background: #fff;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .insight-title {
+        .message {
+            font-size: 20px;
             font-weight: bold;
             color: #2c3e50;
+            margin-top: 10px;
         }
 
-        .graph-container {
+        .progress-report {
             margin-top: 20px;
-        }
-
-        .graph-container img {
-            width: 100%;
-            max-width: 750px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        .back-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: #007bff;
+            padding: 20px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 16px;
-            transition: background 0.3s;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .back-btn:hover {
-            background: #0056b3;
+        .progress-title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .progress-item {
+            font-size: 18px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 10px 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .progress-item:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #ffeb3b;
         }
     </style>
 </head>
-
 <body>
     <div class="container">
-        <h1>Your Monthly Progress Summary 🚀</h1>
+        <h1>Stats Overview</h1>
+        <p class="message" id="welcome-message">Way to go! You've made the Duo-Do team smile 😊</p>
+    </div>
 
-        <div class="insight-card">
-            <p class="insight-title">📊 Overall Success Score:</p>
-            <p id="overall-success">Loading...</p>
-        </div>
-
-        <div class="insight-card">
-            <p class="insight-title">🏆 Best Week:</p>
-            <p id="best-week">Loading...</p>
-        </div>
-
-        <div class="insight-card">
-            <p class="insight-title">📉 Worst Week:</p>
-            <p id="worst-week">Loading...</p>
-        </div>
-
-        <div class="insight-card">
-            <p class="insight-title">😊 Happiest Days:</p>
-            <p id="happiest-days">Loading...</p>
-        </div>
-
-        <div class="insight-card">
-            <p class="insight-title">💪 Fitness Completion Rate:</p>
-            <p id="fitness-rate">Loading...</p>
-        </div>
-
-        <div class="graph-container">
-            <h2>📈 Your Progress Chart:</h2>
-            <img id="progress-graph" src="graph.png" alt="Your Progress Graph">
-        </div>
-
-        <a href="home.html" class="back-btn">Back to Dashboard</a>
+    <div class="container progress-report">
+        <p class="progress-title">Your Progress Report</p>
+        <p class="progress-item">📊 <span class="highlight">Overall Success Score:</span> <span id="overall-success">Loading...</span></p>
+        <p class="progress-item">🏆 <span class="highlight">Best Week:</span> <span id="best-week">Loading...</span></p>
+        <p class="progress-item">📉 <span class="highlight">Worst Week:</span> <span id="worst-week">Loading...</span></p>
+        <p class="progress-item">😊 <span class="highlight">Happiest Days:</span> <span id="happiest-days">Loading...</span></p>
+        <p class="progress-item">💪 <span class="highlight">Fitness Completion Rate:</span> <span id="fitness-rate">Loading...</span></p>
     </div>
 
     <script>
-        // Load insights dynamically (Replace with actual data from storage)
-        document.getElementById("overall-success").innerText = "82.5%";
-        document.getElementById("best-week").innerText = "Week 3";
-        document.getElementById("worst-week").innerText = "Week 1";
-        document.getElementById("happiest-days").innerText = "12 Days";
-        document.getElementById("fitness-rate").innerText = "75%";
+        document.addEventListener('DOMContentLoaded', function() {
+            const userName = localStorage.getItem('userName') || 'Duo-Do Champion';
+            document.getElementById('welcome-message').innerText = `Way to go, ${userName}! You've made the Duo-Do team smile 😊`;
+
+            document.getElementById("overall-success").innerText = "82.5%";
+            document.getElementById("best-week").innerText = "Week 3";
+            document.getElementById("worst-week").innerText = "Week 1";
+            document.getElementById("happiest-days").innerText = "12 Days";
+            document.getElementById("fitness-rate").innerText = "75%";
+        });
     </script>
 </body>
-
 </html>

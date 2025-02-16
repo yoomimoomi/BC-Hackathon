@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <style>
-    /* Basic styling for the page */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -22,6 +21,7 @@
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
     }
 
     input,
@@ -35,7 +35,6 @@
       cursor: pointer;
     }
 
-    /* Modal container hidden by default */
     .modal {
       display: none;
       position: fixed;
@@ -48,7 +47,6 @@
       background-color: rgba(0, 0, 0, 0.4);
     }
 
-    /* Modal content styling */
     .modal-content {
       background-color: #fff;
       margin: 15% auto;
@@ -71,7 +69,6 @@
     <button onclick="startJourney()">Start your Journey</button>
   </div>
 
-  <!-- Modal Popup -->
   <div id="modal" class="modal">
     <div class="modal-content">
       <h2>Choose an Option</h2>
@@ -81,7 +78,6 @@
   </div>
 
   <script>
-    // Custom algorithm to generate a valid 6-digit code
     function generateValidCode() {
       let code = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
       let digits = code.split('').map(Number);
@@ -90,18 +86,11 @@
       return code;
     }
 
-    // Checks if a code is valid
     function validateCode(code) {
-      if (code > 999999 || code < 0) {
-        return false;
-      }
+      if (code.length !== 6) return false;
       let digits = code.split('').map(Number);
-      if ((digits[0] * digits[1] + digits[2] * digits[3]) % 100 == (digits[4] * 10 + digits[5])) {
-        return true;
-      }
-      return false;
+      return (digits[0] * digits[1] + digits[2] * digits[3]) % 100 === (digits[4] * 10 + digits[5]);
     }
-
 
     function displayCode() {
       const code = generateValidCode();
@@ -109,9 +98,9 @@
     }
 
     function startJourney() {
-      const name = document.getElementById('name').value;
+      const name = document.getElementById('name').value.trim();
       if (name) {
-        // Show the modal popup when a valid name is entered
+        localStorage.setItem('userName', name);
         document.getElementById('modal').style.display = 'block';
       } else {
         alert('Please enter your name.');
@@ -121,12 +110,10 @@
     document.addEventListener('DOMContentLoaded', () => {
       displayCode();
 
-      // Redirect to why.html when "Why Duo-Do?" is clicked
       document.getElementById('whyBtn').addEventListener('click', () => {
         window.location.href = 'why.html';
       });
 
-      // Redirect to home.html when "Let's make it happen!" is clicked
       document.getElementById('letsBtn').addEventListener('click', () => {
         window.location.href = 'start-screen.html';
       });
