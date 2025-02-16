@@ -55,8 +55,8 @@ We cut the fluff and focus on **what truly works**. That’s why **Duo-Day is sp
 
 ##  How to Use Duo-Day 
 
-1. **Sign Up & Find a Buddy** – The app cannot be used solo. Find a friend or get paired.  
-2. **Select Your Functions** – Choose the areas you want to focus on (Screen Time, Fitness, Check-In, Mental Health).  
+1. **Find a Buddy** – The app cannot be used solo. Bring a friend, we are social beings afterall.  
+2. **Select Your Functions** – Choose the areas you want to focus on (Screen Time, Fitness, Check-In, Mental Health). Min 2 are needed. Having all four functions works the best for our algorithm to give you accurate results/  
 3. **Commit for One Month** – The app tracks your progress daily with a simple **calendar-based log system**.  
 4. **Compare Your Results** – At the end of 30 days, see how your performance stacks up.  
 
