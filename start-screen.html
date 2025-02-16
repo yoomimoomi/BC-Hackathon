@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Duo-Do!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <style>
+    /* Basic styling for the page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+
+    #app {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    input,
+    button {
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 1em;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* Modal container hidden by default */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /* Modal content styling */
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 300px;
+      text-align: center;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Let's Get Started!</h1>
+    <div style="width: 100%;">
+      <div style="float:left; width: 50%">
+        <label for="your-name">Your Code:</label><br>
+        <input type="text" id="your-name" name="your-name" />
+      </div>
+      <div style="float:right; width: 50%">
+        <label for="buddy-name">Your Buddy's Code:</label><br>
+        <input type="text" id="buddy-name" name="buddy-name" /><br>
+      </div>
+   </div>
+   <div style="clear:both"></div>
+   
+    <button onclick="makeCalendar()">Witty Name Here</button>
+  </div>
+
+  <!-- Modal Popup -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h2>Choose an Option</h2>
+      <button id="whyBtn">Why Duo-Do?</button>
+      <button id="letsBtn">Let's make it happen!</button>
+    </div>
+  </div>
+
+  <script src="src/main.js"></script>
+  <script>
+    function makeCalendar() {
+      const code_1 = document.getElementById('your-name').value;
+      const code_2 = document.getElementById('buddy-name').value;
+      if (!code_1 || !code_2) {
+        alert('Please enter two codes.');
+      } else if (code_1 == code_2){
+        alert('You can\'t be your own buddy!');
+      }
+      // TODO, CORRECTLY IMPORT main.js SO THIS WORKS
+      else if (!validateCode(code_1)){
+        alert('Your code is invalid.');
+      }
+      else if (!validateCode(code_2)){
+        alert('Your buddy\'s code is invalid.');
+      }
+      else {
+        alert('Make this do something.');
+      }
+    }
+  </script>
+</body>
+
+</html>
