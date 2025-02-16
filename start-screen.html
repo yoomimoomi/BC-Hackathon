@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <style>
-    /* Basic styling for the page */
+    /* Basic styling */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -24,8 +24,7 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-    input,
-    button {
+    input, button {
       padding: 10px;
       margin-top: 10px;
       font-size: 1em;
@@ -35,94 +34,90 @@
       cursor: pointer;
     }
 
-    /* Modal container hidden by default */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    /* Modal content styling */
-    .modal-content {
-      background-color: #fff;
-      margin: 15% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-      max-width: 300px;
+    /* Centered Content */
+    .center {
       text-align: center;
-      border-radius: 5px;
     }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <h1>Let's Get Started!</h1>
-    <div style="width: 100%;">
-      <div style="float:left; width: 50%">
+    <h1 class="center">Let's Get Started!</h1>
+
+    <div style="display: flex; justify-content: space-between;">
+      <div>
         <label for="your-name">Your Code:</label><br>
         <input type="text" id="your-name" name="your-name" />
       </div>
-      <div style="float:right; width: 50%">
-        <label for="buddy-name">Your Buddy's Code:</label><br>
-        <input type="text" id="buddy-name" name="buddy-name" /><br>
-      </div>
-      <h3>What do you want to track?</h3>
       <div>
-        <input type="checkbox" id="check1" name="check1" value="ScreenTime">
-        <label for="check1"> Screen Time</label><br>
-        <input type="checkbox" id="check2" name="check2" value="Fitness">
-        <label for="check2"> Fitness Commitment</label><br>
-        <input type="checkbox" id="check3" name="check3" value="Mood">
-        <label for="check3"> Mood</label><br>
-        <input type="checkbox" id="check4" name="check4" value="Mindfulness">
-        <label for="check4"> Mindfulness</label><br>
+        <label for="buddy-name">Your Buddy's Code:</label><br>
+        <input type="text" id="buddy-name" name="buddy-name" />
       </div>
-      
-   </div>
-   <div style="clear:both"></div>
-   
-    <button onclick="makeCalendar()">Witty Name Here</button>
+    </div>
+
+    <h3>What do you want to track?</h3>
+    <div>
+      <input type="checkbox" id="check1" name="check1" value="ScreenTime">
+      <label for="check1"> Screen Time</label><br>
+      <input type="checkbox" id="check2" name="check2" value="Fitness">
+      <label for="check2"> Fitness Commitment</label><br>
+      <input type="checkbox" id="check3" name="check3" value="Mood">
+      <label for="check3"> Mood</label><br>
+      <input type="checkbox" id="check4" name="check4" value="Mindfulness">
+      <label for="check4"> Mindfulness</label><br>
+    </div>
+
+    <div class="center">
+      <button onclick="makeCalendar()">Start Your Journey</button>
+    </div>
   </div>
 
-  <!-- Modal Popup
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <h2>Choose an Option</h2>
-      <button id="whyBtn">Why Duo-Do?</button>
-      <button id="letsBtn">Let's make it happen!</button>
-    </div>
-  </div> -->
-
-  <script src="src/main.js"></script>
   <script>
     function makeCalendar() {
-      const code_1 = document.getElementById('your-name').value;
-      const code_2 = document.getElementById('buddy-name').value;
-      if (!code_1 || !code_2) {
-        alert('Please enter two codes.');
-      } else if (code_1 == code_2){
-        alert('You can\'t be your own buddy!');
+      const code1 = document.getElementById('your-name').value.trim();
+      const code2 = document.getElementById('buddy-name').value.trim();
+
+      if (!code1 || !code2) {
+        alert('Please enter both codes.');
+        return;
       }
-      // TODO, CORRECTLY IMPORT main.js SO THIS WORKS
-      else if (!validateCode(code_1)){
+
+      if (code1 === code2) {
+        alert("You can't be your own buddy!");
+        return;
+      }
+
+      if (!validateCode(code1)) {
         alert('Your code is invalid.');
+        return;
       }
-      else if (!validateCode(code_2)){
-        alert('Your buddy\'s code is invalid.');
+
+      if (!validateCode(code2)) {
+        alert("Your buddy's code is invalid.");
+        return;
       }
-      else {
-        window.location.href = 'home.html';
+
+      // Check at least one checkbox is selected
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      if (checkboxes.length < 1) {
+        alert('Please select at least one tracking category.');
+        return;
       }
+
+      // Store values in localStorage (optional)
+      localStorage.setItem('yourCode', code1);
+      localStorage.setItem('buddyCode', code2);
+
+      // Redirect to home.html
+      window.location.href = 'home.html';
+    }
+
+    function validateCode(code) {
+      // Example: a valid code must be a 6-digit number
+      return /^\d{6}$/.test(code);
     }
   </script>
-</body>
 
+</body>
 </html>
