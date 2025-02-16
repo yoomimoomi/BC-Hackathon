@@ -4,6 +4,7 @@ Duo-Day! is a **minimalist lifestyle app** designed for individuals looking to m
 
 This app isn't just about tracking habits. It’s about **committing to a change and following through – together.**  
 
+## We believe it is essential for us to consult with professionals before we start talking about a problem and starting to resolve it. In our short 3 day production cycle. We consulted a pre-liscensed therapist and a practicing Organizational therapist.
 
 ##  Why Duo-Day?  
 
@@ -65,7 +66,6 @@ We cut the fluff and focus on **what truly works**. That’s why **Duo-Day is sp
 ✔ **Backed by Behavioral Science** – Duo-Day isn’t just a to-do list; it’s structured for **real habit formation**.  
 ✔ **Minimalist & Brutally Functional** – No distractions, no fluff. Just **results**.  
 ✔ **Built for Long-Term Change** – A system designed to **break bad habits and reinforce good ones** through consistency and accountability.  
-
 
 
 ## Tech Stack & Development  
