@@ -80,5 +80,5 @@ We cut the fluff and focus on **what truly works**. That’s why **Duo-Day is sp
 Want to help improve Duo-Day? Contributions are welcome! Fork this repository, create a branch, and submit a pull request.  
 
 ```sh
-git clone https://github.com/yourusername/duo-do.git
-cd duo-do
+git clone https://github.com/yourusername/duo-day.git
+cd duo-day
