@@ -29,7 +29,6 @@
     button {
       cursor: pointer;
     }
-    
     /* Modal container hidden by default */
     .modal {
       display: none;
@@ -76,25 +75,19 @@
   <script>
     // Custom algorithm to generate a valid 6-digit code
     function generateValidCode() {
-      let code = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-      let digits = code.split('').map(Number);
-      let check = digits[0] * digits[1] + digits[2] * digits[3];
-      code = code + (check%100).toString().padStart(2,'0');
-      return code;
-    }
+      while (true) {
+        let code = Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+        let digits = code.split('').map(Number);
+        
+        let sum = digits.reduce((a, b) => a + b, 0);
+        let product1 = digits[0] * digits[1] * digits[2];
+        let product2 = digits[3] * digits[4] * digits[5];
 
-    // Checks if a code is valid
-    function validateCode(code) {
-      if (code > 999999 || code < 0) {
-        return false;
+        if (sum % 7 === 0 && product1 === product2) {
+          return code;
+        }
       }
-      let digits = code.split('').map(Number);
-      if ((digits[0] * digits[1] + digits[2] * digits[3]) % 100 == (digits[4] * 10 + digits[5])){
-        return true;
-      }
-      return false;
     }
-
 
     function displayCode() {
       const code = generateValidCode();
@@ -114,14 +107,13 @@
     document.addEventListener('DOMContentLoaded', () => {
       displayCode();
 
-      // Event listener for "Why Duo-Do?" button
+      // Redirect to why.html when "Why Duo-Do?" is clicked
       document.getElementById('whyBtn').addEventListener('click', () => {
-        alert("Duo-Do is all about enhancing your productivity with a unique, personalized experience!");
+        window.location.href = 'why.html';
       });
       
-      // Event listener for "Let's make it happen!" button
+      // Redirect to home.html when "Let's make it happen!" is clicked
       document.getElementById('letsBtn').addEventListener('click', () => {
-        // Redirect to home.html or handle further navigation
         window.location.href = 'home.html';
       });
     });
