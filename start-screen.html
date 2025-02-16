@@ -7,17 +7,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f5f7fa;
+    body, html {
       margin: 0;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
     }
 
+    /* Video container */
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .video-container video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    /* Dark overlay for readability */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+
+    /* Keep the container exactly as it was */
     #app {
       max-width: 450px;
       background: white;
@@ -25,6 +55,10 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       text-align: center;
+      position: relative;
+      margin: auto;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     h1 {
@@ -103,6 +137,19 @@
 </head>
 
 <body>
+
+  <!-- Background Video -->
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="videos/Bike.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Dark overlay for readability -->
+  <div class="overlay"></div>
+
+  <!-- Foreground Content (Container remains UNCHANGED) -->
   <div id="app">
     <h1>Let's Get Started!</h1>
 
