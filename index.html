@@ -1,24 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Duo-Do!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <style>
-    /* Ensure full-screen video background */
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden;
       font-family: 'Arial', sans-serif;
-      color: white;
-      text-align: center;
     }
 
-    /* Video container for looping background */
+    /* Background video container */
     .video-container {
       position: fixed;
       top: 0;
@@ -50,17 +47,18 @@
       z-index: 0;
     }
 
-    /* Container with old functionality */
+    /* Keep the container exactly as it was */
     #app {
-      position: relative;
-      z-index: 1;
       max-width: 450px;
       background: white;
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
       text-align: center;
-      margin: 50px auto;
+      position: relative;
+      margin: auto;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     h1 {
@@ -104,11 +102,10 @@
       transform: scale(1.05);
     }
 
-    /* Modal for selection */
     .modal {
       display: none;
       position: fixed;
-      z-index: 2;
+      z-index: 1;
       left: 0;
       top: 0;
       width: 100%;
@@ -157,10 +154,10 @@
     </video>
   </div>
 
-  <!-- Dark overlay -->
+  <!-- Dark overlay for readability -->
   <div class="overlay"></div>
 
-  <!-- Foreground Container -->
+  <!-- Foreground Content (Container remains UNCHANGED) -->
   <div id="app">
     <h1>Duo-Do!</h1>
     
@@ -174,7 +171,6 @@
     <button onclick="startJourney()">Start your Journey</button>
   </div>
 
-  <!-- Modal for Options -->
   <div id="modal" class="modal">
     <div class="modal-content">
       <h2>Choose an Option</h2>
