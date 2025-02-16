@@ -6,14 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Duo-Do!</title>
   <link rel="stylesheet" href="style.css">
+
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth'
+      });
+      calendar.render();
+    });
+
+  </script>
+
 </head>
 <body>
   <div id="app">
     <div>
       <h1>Home</h1>
-      <label for="name">What is your name?</label><br>
-      <input type="text" id="name" name="name" /><br>
-      <p id="code">Unique monthly code: </p>
+      <container>
+       <div id='calendar'></div>
+        </container>
       <h1>test</h1>
     </div>
   </div>
