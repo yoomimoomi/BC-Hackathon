@@ -66,15 +66,7 @@ We cut the fluff and focus on **what truly works**. That’s why **Duo-Do is spe
 ✔ **Minimalist & Brutally Functional** – No distractions, no fluff. Just **results**.  
 ✔ **Built for Long-Term Change** – A system designed to **break bad habits and reinforce good ones** through consistency and accountability.  
 
-1. **Added Expert-Backed Research:**  
-   - **Now explicitly states that a professional psychologist and professor from Brooklyn College has contributed to the app's research.**  
-   - Reinforces **scientific credibility and effectiveness**.  
-
-2. **Updated the "What Makes Duo-Do Special?" Section:**  
-   - Highlights that **real psychological expertise** has shaped the app.  
-
-3. **Refined the "Design Philosophy" Section:**  
-   - Makes it clear that **Duo-Do is not just another habit tracker—it’s a deeply researched, highly functional system.**
+** Backed by Professor Anjna Arun from Brooklyn College **
 
 
 ## Tech Stack & Development  
