@@ -66,7 +66,7 @@ We cut the fluff and focus on **what truly works**. That’s why **Duo-Do is spe
 ✔ **Minimalist & Brutally Functional** – No distractions, no fluff. Just **results**.  
 ✔ **Built for Long-Term Change** – A system designed to **break bad habits and reinforce good ones** through consistency and accountability.  
 
-** Backed by Professor Anjna Arun from Brooklyn College **
+**Backed by Professor Anjna Arun from Brooklyn College**
 
 
 ## Tech Stack & Development  
