@@ -7,16 +7,18 @@
   <title>Duo-Do!</title>
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <style>
-    /* Make sure the video covers the entire screen */
+    /* Ensure full-screen video background */
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden;
       font-family: 'Arial', sans-serif;
+      color: white;
+      text-align: center;
     }
 
-    /* Video background */
+    /* Video container for looping background */
     .video-container {
       position: fixed;
       top: 0;
@@ -44,39 +46,103 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.4); /* Adjust transparency as needed */
+      background: rgba(0, 0, 0, 0.4);
       z-index: 0;
     }
 
-    /* Content on top */
-    .content {
+    /* Container with old functionality */
+    #app {
       position: relative;
       z-index: 1;
+      max-width: 450px;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
       text-align: center;
-      color: white;
-      padding: 50px;
+      margin: 50px auto;
     }
 
     h1 {
-      font-size: 36px;
+      color: #2c3e50;
+      font-size: 26px;
+      margin-bottom: 15px;
     }
 
-    input, button {
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+      width: 100%;
       padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
       font-size: 16px;
-      border-radius: 5px;
-      border: none;
-      margin-top: 10px;
+      text-align: center;
     }
 
     button {
       background: linear-gradient(135deg, #6a11cb, #2575fc);
       color: white;
+      font-size: 18px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
+      margin-top: 15px;
+      width: 100%;
+      transition: all 0.3s ease-in-out;
     }
 
     button:hover {
       background: linear-gradient(135deg, #2575fc, #6a11cb);
+      transform: scale(1.05);
+    }
+
+    /* Modal for selection */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      width: 80%;
+      max-width: 320px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .modal-content h2 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    .modal-content button {
+      width: 100%;
+      margin: 8px 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
@@ -85,8 +151,8 @@
 
   <!-- Background Video -->
   <div class="video-container">
-    <video autoplay muted loop>
-      <source src="https://player.vimeo.com/external/395937179.hd.mp4?s=9272098728cbcf344a15e15165d8f62f39a04b3e&profile_id=174" type="video/mp4">
+    <video autoplay muted loop playsinline>
+      <source src="videos/ocean.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
@@ -94,13 +160,72 @@
   <!-- Dark overlay -->
   <div class="overlay"></div>
 
-  <!-- Content on top -->
-  <div class="content">
-    <h1>Welcome to Duo-Do!</h1>
-    <p>Let's start your journey with a peaceful mind.</p>
-    <input type="text" placeholder="Enter your name">
-    <button>Start</button>
+  <!-- Foreground Container -->
+  <div id="app">
+    <h1>Duo-Do!</h1>
+    
+    <div class="input-group">
+      <label for="name">What is your name?</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" />
+    </div>
+
+    <p id="code"><strong>Unique monthly code:</strong> <span id="generated-code"></span></p>
+    
+    <button onclick="startJourney()">Start your Journey</button>
   </div>
 
+  <!-- Modal for Options -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h2>Choose an Option</h2>
+      <button id="whyBtn">Why Duo-Do?</button>
+      <button id="letsBtn">Let's make it happen!</button>
+    </div>
+  </div>
+
+  <script>
+    function generateValidCode() {
+      let code = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+      let digits = code.split('').map(Number);
+      let check = digits[0] * digits[1] + digits[2] * digits[3];
+      code = code + (check % 100).toString().padStart(2, '0');
+      return code;
+    }
+
+    function validateCode(code) {
+      if (code.length !== 6) return false;
+      let digits = code.split('').map(Number);
+      return (digits[0] * digits[1] + digits[2] * digits[3]) % 100 === (digits[4] * 10 + digits[5]);
+    }
+
+    function displayCode() {
+      const code = generateValidCode();
+      document.getElementById('generated-code').innerText = code;
+    }
+
+    function startJourney() {
+      const name = document.getElementById('name').value.trim();
+      if (name) {
+        localStorage.setItem('userName', name);
+        document.getElementById('modal').style.display = 'flex';
+      } else {
+        alert('Please enter your name.');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      displayCode();
+
+      document.getElementById('whyBtn').addEventListener('click', () => {
+        window.location.href = 'why.html';
+      });
+
+      document.getElementById('letsBtn').addEventListener('click', () => {
+        window.location.href = 'start-screen.html';
+      });
+    });
+  </script>
+
 </body>
+
 </html>
