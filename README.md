@@ -1,4 +1,4 @@
-# 🏆 Duo-Do! – The Accountability Buddy System  
+#  Duo-Do! – The Accountability Buddy System  
 
 Duo-Do! is a **minimalist lifestyle app** designed for individuals looking to make **real changes in their daily routines**. Whether you're a remote worker struggling with screen time, a busy professional in need of an activity boost, or someone looking for mental wellness support, **Duo-Do keeps you accountable – with a buddy.**  
 
@@ -18,17 +18,17 @@ This app is designed with **research-backed methodologies, a brutally functional
 
 Duo-Do! is built around **four core functions** – you can disable up to **two**, but **all are highly recommended** for best results.  
 
-### 1️⃣ **Track Screen Time**  
-📱 Submit **your buddy’s screen time** and receive theirs. Stay accountable for cutting down excessive device usage.  
+###  **Track Screen Time**  
+ Submit **your buddy’s screen time** and receive theirs. Stay accountable for cutting down excessive device usage.  
 
-### 2️⃣ **Fitness Commitment**  
-🏋️ Select a **daily physical activity** (running, stretching, bodyweight exercises, etc.) and check in with your buddy.  
+###  **Fitness Commitment**  
+ Select a **daily physical activity** (running, stretching, bodyweight exercises, etc.) and check in with your buddy.  
 
-### 3️⃣ **Daily Check-In (Mood Tracker)**  
-😊 Submit an **emoji-based check-in** – sad, neutral, or happy. Reflect on your progress, mood, and mental state over time.  
+###  **Daily Check-In (Mood Tracker)**  
+ Submit an **emoji-based check-in** – sad, neutral, or happy. Reflect on your progress, mood, and mental state over time.  
 
-### 4️⃣ **Mental Health & Mindfulness**  
-🧘 Engage in **guided meditation, yoga, or mindfulness practices** to stay mentally balanced.  
+###  **Mental Health & Mindfulness**  
+ Engage in **guided meditation, yoga, or mindfulness practices** to stay mentally balanced.  
 
  **One-Month Challenges:** Duo-Do operates in **monthly cycles**. After 30 days, your results are **compared against the average performance of users**, helping you measure your growth.  
 
