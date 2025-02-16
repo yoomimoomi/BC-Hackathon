@@ -1,24 +1,36 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import './style.css';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// Custom algorithm to generate a valid 6-digit code
+function generateValidCode() {
+  while (true) {
+    let code = Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+    let digits = code.split('').map(Number);
+    
+    let sum = digits.reduce((a, b) => a + b, 0);
+    let product1 = digits[0] * digits[1] * digits[2];
+    let product2 = digits[3] * digits[4] * digits[5];
 
-setupCounter(document.querySelector('#counter'))
+    if (sum % 7 === 0 && product1 === product2) {
+      return code;
+    }
+  }
+}
+
+function displayCode() {
+  const code = generateValidCode();
+  document.getElementById('code').innerText += `${code}`;
+}
+
+function startJourney() {
+  const name = document.getElementById('name').value;
+  if (name) {
+    alert(`Welcome, ${name}! Your journey begins now.`);
+    // You can add navigation to the next page here
+  } else {
+    alert('Please enter your name.');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  displayCode();
+});

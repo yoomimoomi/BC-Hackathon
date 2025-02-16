@@ -1,13 +1,22 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duo-Do!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div>
+      <h1>Duo-Do!</h1>
+      <label for="name">What is your name?</label><br>
+      <input type="text" id="name" name="name" /><br>
+      <p id="code">Unique monthly code: </p>
+      <button onclick="startJourney()">Start your Journey</button>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
 </html>
