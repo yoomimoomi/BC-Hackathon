@@ -20,10 +20,37 @@ h1 {
   line-height: 1.1;
 }
 
-.calendar-container {
+#calendar {
+  height: 1000px;
+  width: 1000px;
+}
+
+#stats {
+  padding: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 15px;
+}
+
+#avatar-card {
   align-items: center;
 }
 
-.card {
-  border: #535bf2 1px solid;
+#avatars {
+  list-style: none;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Makes items align in a row */
+  gap: 15px;
+}
+
+#new-button {
+  height: 60px;
+  width: 200px ;
+}
+
+p {
+  padding-top: 5px;
 }
