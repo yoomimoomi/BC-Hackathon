@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Journey Summary | Duo-Do</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 28px;
+        }
+
+        .insight-card {
+            background: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .insight-title {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .graph-container {
+            margin-top: 20px;
+        }
+
+        .graph-container img {
+            width: 100%;
+            max-width: 750px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Your Monthly Progress Summary 🚀</h1>
+
+        <div class="insight-card">
+            <p class="insight-title">📊 Overall Success Score:</p>
+            <p id="overall-success">Loading...</p>
+        </div>
+
+        <div class="insight-card">
+            <p class="insight-title">🏆 Best Week:</p>
+            <p id="best-week">Loading...</p>
+        </div>
+
+        <div class="insight-card">
+            <p class="insight-title">📉 Worst Week:</p>
+            <p id="worst-week">Loading...</p>
+        </div>
+
+        <div class="insight-card">
+            <p class="insight-title">😊 Happiest Days:</p>
+            <p id="happiest-days">Loading...</p>
+        </div>
+
+        <div class="insight-card">
+            <p class="insight-title">💪 Fitness Completion Rate:</p>
+            <p id="fitness-rate">Loading...</p>
+        </div>
+
+        <div class="graph-container">
+            <h2>📈 Your Progress Chart:</h2>
+            <img id="progress-graph" src="graph.png" alt="Your Progress Graph">
+        </div>
+
+        <a href="home.html" class="back-btn">Back to Dashboard</a>
+    </div>
+
+    <script>
+        // Load insights dynamically (Replace with actual data from storage)
+        document.getElementById("overall-success").innerText = "82.5%";
+        document.getElementById("best-week").innerText = "Week 3";
+        document.getElementById("worst-week").innerText = "Week 1";
+        document.getElementById("happiest-days").innerText = "12 Days";
+        document.getElementById("fitness-rate").innerText = "75%";
+    </script>
+</body>
+
+</html>
