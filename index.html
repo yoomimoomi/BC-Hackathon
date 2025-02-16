@@ -1,124 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Duo-Do!</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    /* Make sure the video covers the entire screen */
+    body, html {
       margin: 0;
-      padding: 20px;
-      background-color: #f5f5f5;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
     }
 
-    #app {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Video background */
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .video-container video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    /* Dark overlay for readability */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4); /* Adjust transparency as needed */
+      z-index: 0;
+    }
+
+    /* Content on top */
+    .content {
+      position: relative;
+      z-index: 1;
       text-align: center;
+      color: white;
+      padding: 50px;
     }
 
-    input,
-    button {
+    h1 {
+      font-size: 36px;
+    }
+
+    input, button {
       padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
       margin-top: 10px;
-      font-size: 1em;
     }
 
     button {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
       cursor: pointer;
     }
 
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    .modal-content {
-      background-color: #fff;
-      margin: 15% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-      max-width: 300px;
-      text-align: center;
-      border-radius: 5px;
+    button:hover {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
     }
   </style>
 </head>
 
 <body>
-  <div id="app">
-    <h1>Duo-Do!</h1>
-    <label for="name">What is your name?</label><br>
-    <input type="text" id="name" name="name" /><br>
-    <p id="code">Unique monthly code: </p>
-    <button onclick="startJourney()">Start your Journey</button>
+
+  <!-- Background Video -->
+  <div class="video-container">
+    <video autoplay muted loop>
+      <source src="https://player.vimeo.com/external/395937179.hd.mp4?s=9272098728cbcf344a15e15165d8f62f39a04b3e&profile_id=174" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
 
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <h2>Choose an Option</h2>
-      <button id="whyBtn">Why Duo-Do?</button>
-      <button id="letsBtn">Let's make it happen!</button>
-    </div>
+  <!-- Dark overlay -->
+  <div class="overlay"></div>
+
+  <!-- Content on top -->
+  <div class="content">
+    <h1>Welcome to Duo-Do!</h1>
+    <p>Let's start your journey with a peaceful mind.</p>
+    <input type="text" placeholder="Enter your name">
+    <button>Start</button>
   </div>
 
-  <script>
-    function generateValidCode() {
-      let code = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-      let digits = code.split('').map(Number);
-      let check = digits[0] * digits[1] + digits[2] * digits[3];
-      code = code + (check % 100).toString().padStart(2, '0');
-      return code;
-    }
-
-    function validateCode(code) {
-      if (code.length !== 6) return false;
-      let digits = code.split('').map(Number);
-      return (digits[0] * digits[1] + digits[2] * digits[3]) % 100 === (digits[4] * 10 + digits[5]);
-    }
-
-    function displayCode() {
-      const code = generateValidCode();
-      document.getElementById('code').innerText += code;
-    }
-
-    function startJourney() {
-      const name = document.getElementById('name').value.trim();
-      if (name) {
-        localStorage.setItem('userName', name);
-        document.getElementById('modal').style.display = 'block';
-      } else {
-        alert('Please enter your name.');
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      displayCode();
-
-      document.getElementById('whyBtn').addEventListener('click', () => {
-        window.location.href = 'why.html';
-      });
-
-      document.getElementById('letsBtn').addEventListener('click', () => {
-        window.location.href = 'start-screen.html';
-      });
-    });
-  </script>
 </body>
-
 </html>
